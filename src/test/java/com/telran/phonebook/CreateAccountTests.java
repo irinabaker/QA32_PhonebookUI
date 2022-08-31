@@ -14,30 +14,26 @@ public class CreateAccountTests extends TestBase{
     public void ensurePreconditions() {
         //precondition: user should be logged out
         if (!isElementPresent(By.xpath("//a[contains(.,'LOGIN')]"))){
-            driver.findElement(By.xpath("//button[contains(.,'Sign Out')]")).click();
+            click(By.xpath("//button[contains(.,'Sign Out')]"));
         } else {
             //click on LOGIN link
-            driver.findElement(By.xpath("//a[contains(.,'LOGIN')]")).click();
+            clickOnLoginLink();
         }
     }
 
     //test
     @Test
-    public void createAccountPositiveTest() throws InterruptedException {
+    public void createAccountPositiveTest() {
+        int i = (int) ((System.currentTimeMillis()/1000)%3600);
         //assert is registration form displayed
         Assert.assertTrue(isElementPresent2(By.cssSelector(".login_login__3EHKB")));
         //fill registration form
-        driver.findElement(By.cssSelector("[placeholder='Email']")).click();
-        driver.findElement(By.cssSelector("[placeholder='Email']")).clear();
-        driver.findElement(By.cssSelector("[placeholder='Email']")).sendKeys("karl+2@gmail.co");
-        driver.findElement(By.cssSelector("[placeholder='Password']")).click();
-        driver.findElement(By.cssSelector("[placeholder='Password']")).clear();
-        driver.findElement(By.cssSelector("[placeholder='Password']")).sendKeys("Aa12345~");
+        fillLoginRegistrationForm("email" + i + "@gmail.com","Aa12345~");
         //click on Registration button
-        driver.findElement(By.xpath("//button[contains(.,'Registration')]")).click();
+        click(By.xpath("//button[contains(.,'Registration')]"));
         //verify Sign Out button displayed
-        Thread.sleep(1000);
-        Assert.assertTrue(isElementPresent(By.xpath("//button[contains(.,'Sign Out')]")));
+       pause(1000);
+        Assert.assertTrue(isSignOutButtonPresent());
     }
 
     @Test
@@ -45,14 +41,9 @@ public class CreateAccountTests extends TestBase{
         //assert is registration form displayed
         Assert.assertTrue(isElementPresent2(By.cssSelector(".login_login__3EHKB")));
         //fill registration form
-        driver.findElement(By.cssSelector("[placeholder='Email']")).click();
-        driver.findElement(By.cssSelector("[placeholder='Email']")).clear();
-        driver.findElement(By.cssSelector("[placeholder='Email']")).sendKeys("karl+2@gmail.co");
-        driver.findElement(By.cssSelector("[placeholder='Password']")).click();
-        driver.findElement(By.cssSelector("[placeholder='Password']")).clear();
-        driver.findElement(By.cssSelector("[placeholder='Password']")).sendKeys("Aa12345");
+        fillLoginRegistrationForm("karl+2@gmail.co", "Aa12345");
         //click on Registration button
-        driver.findElement(By.xpath("//button[contains(.,'Registration')]")).click();
+        click(By.xpath("//button[contains(.,'Registration')]"));
         //verify Sign Out button displayed
         Assert.assertTrue(isAlertPresent());
         Assert.assertTrue(isElementPresent(By.xpath("//div[contains(.,'Registration failed with code 400')]")));

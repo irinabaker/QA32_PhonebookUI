@@ -1,16 +1,13 @@
-package com.telran.phonebook;
+package fw;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.testng.annotations.Test;
+import org.openqa.selenium.WebDriver;
 
-public class HomePageTests extends TestBase{
+public class HomePageHelper extends HelperBase{
 
-    @Test
-    public void openHomePage() {
-
-        System.out.println("Home Component: " + isHomeComponentPresent2());
-        isHomeComponentPresent();
+    public HomePageHelper(WebDriver driver) {
+        super(driver);
     }
 
     public boolean isHomeComponentPresent() {
@@ -25,5 +22,4 @@ public class HomePageTests extends TestBase{
             return false;
         }
     }
-
 }

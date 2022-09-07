@@ -1,6 +1,7 @@
 package model;
 
 public class Contact {
+
     private String name;
     private String surName;
     private String phone;
@@ -60,5 +61,14 @@ public class Contact {
 
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

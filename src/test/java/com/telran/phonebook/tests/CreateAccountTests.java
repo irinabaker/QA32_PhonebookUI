@@ -19,7 +19,7 @@ public class CreateAccountTests extends TestBase{
     }
 
     //test
-    @Test
+    @Test(enabled = false)
     public void createAccountPositiveTest() {
         int i = (int) ((System.currentTimeMillis()/1000)%3600);
         //assert is registration form displayed

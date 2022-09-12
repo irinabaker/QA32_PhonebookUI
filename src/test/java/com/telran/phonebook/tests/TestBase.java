@@ -6,7 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -18,6 +20,7 @@ public class TestBase {
     Logger logger = LoggerFactory.getLogger(TestBase.class);
 
     @BeforeMethod
+  //  @BeforeSuite
     public void setUp() {
         app.init();
     }
@@ -27,7 +30,8 @@ public class TestBase {
         logger.info("Start test with method " + m.getName() + " with data: " + Arrays.asList(p));
     }
 
-    @AfterMethod
+   @AfterMethod
+   // @AfterSuite
     public void tearDown() {
         app.stop();
     }
@@ -44,3 +48,14 @@ public class TestBase {
     }
 
 }
+
+//@BeforeTest
+    //@BeforeMethod
+        //@BeforeClass
+            //@BeforeSuit
+                //@BeforeGroups
+                //@AfterGroups
+            //@AfterSuit
+        //@AfterClass
+    //@AfterMethod
+//@AfterTest

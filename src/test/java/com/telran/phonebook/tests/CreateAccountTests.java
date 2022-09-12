@@ -5,6 +5,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+import java.io.IOException;
+
 public class CreateAccountTests extends TestBase{
 
     @BeforeMethod
@@ -19,7 +22,7 @@ public class CreateAccountTests extends TestBase{
     }
 
     //test
-    @Test(enabled = false)
+    @Test
     public void createAccountPositiveTest() {
         int i = (int) ((System.currentTimeMillis()/1000)%3600);
         //assert is registration form displayed
@@ -33,7 +36,7 @@ public class CreateAccountTests extends TestBase{
         Assert.assertTrue(app.getHeader().isSignOutButtonPresent());
     }
 
-    @Test
+    @Test(priority = 2)
     public void createAccountNegativeTestWithInvalidPassword() {
         //assert is registration form displayed
         Assert.assertTrue(app.getUser().isLoginRegFormPresent());
@@ -46,10 +49,13 @@ public class CreateAccountTests extends TestBase{
         Assert.assertTrue(app.getUser().isErrorMessagePresent());
     }
 
-    @Test
-    public void createAccountNegativeTestWithoutPassword() {
+    @Test(priority = 1)
+    public void createAccountNegativeTestWithoutPassword() throws IOException, AWTException {
+        app.getContact().deleteScreenCast();
+        app.getContact().startRecording();
         //assert is registration form displayed
         Assert.assertTrue(app.getUser().isLoginRegFormPresent());
+        app.getContact().pause(2000);
         //fill registration form
         app.getUser().fillLoginRegistrationForm(new User().setEmail("karl+2@gmail.co"));
         //click on Registration button
@@ -57,6 +63,8 @@ public class CreateAccountTests extends TestBase{
         //verify Sign Out button displayed
         Assert.assertTrue(app.getUser().isAlertPresent());
         Assert.assertTrue(app.getUser().isErrorMessagePresent());
+        app.getContact().pause(5000);
+        app.getContact().stopRecording();
     }
 
 

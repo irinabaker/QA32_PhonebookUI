@@ -1,4 +1,4 @@
-package com.telran.phonebook.tests;
+package com.telran.phonebook.uiTests;
 
 import model.Contact;
 import org.testng.Assert;

@@ -3,12 +3,12 @@
 <suite name="User" verbose="1" >
     <test name="UserTests" >
         <classes>
-            <class name="com.telran.phonebook.tests.CreateAccountTests" >
+            <class name="com.telran.phonebook.uiTests.CreateAccountTests" >
             <methods>
                 <exclude name=".*Positive.*"></exclude>
             </methods>
             </class>
-            <class name="com.telran.phonebook.tests.LoginTests" />
+            <class name="com.telran.phonebook.uiTests.LoginTests" />
         </classes>
     </test>
 

@@ -3,9 +3,9 @@
 <suite name="Smoky" verbose="1" >
     <test name="SmokyTest" >
         <classes>
-            <class name="com.telran.phonebook.tests.LoginTests" />
-            <class name="com.telran.phonebook.tests.AddContactTests" />
-            <class name="com.telran.phonebook.tests.RemoveContactTests" />
+            <class name="com.telran.phonebook.uiTests.LoginTests" />
+            <class name="com.telran.phonebook.uiTests.AddContactTests" />
+            <class name="com.telran.phonebook.uiTests.RemoveContactTests" />
         </classes>
     </test>
 

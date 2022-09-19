@@ -3,7 +3,7 @@
 <suite name="Exclude" verbose="1" >
     <test name="ExcludeMethod" >
         <classes>
-            <class name="com.telran.phonebook.tests.CreateAccountTests" >
+            <class name="com.telran.phonebook.uiTests.CreateAccountTests" >
                 <methods>
                     <exclude name=".*Positive.*"></exclude>
                 </methods>
